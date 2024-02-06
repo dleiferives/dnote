@@ -184,7 +184,7 @@ int load_config(void) {
 }
 
 
-int main() {
+int main(int argc, char *argv[]) {
 	if(load_config())
 	{
 		printf("notes directory not found, include in dnote.config file in same directory as executable as: notes=/directory/to/notes/\n");
@@ -213,7 +213,8 @@ int main() {
 	} 
 	// File exists, open it in Vim
 	char command[150];
-	sprintf(command, "vim %s", filename);
+	if(argc == 1)
+		sprintf(command, "vim %s", filename);
 	system(command);
 
 
